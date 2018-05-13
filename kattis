@@ -1,0 +1,52 @@
+#!/bin/sh
+clear;
+
+STEP_BY_STEP=0;
+SHOW_INPUTS=1;
+
+if [ ! -d "samples" ]; then
+	mkdir "samples";
+fi
+if [ ! -d "archive" ]; then
+	mkdir "archive";
+fi
+
+
+
+if [ -f "archive/$1.py" ]; then
+	echo "already found in archive!";
+	exit 1 
+fi
+
+if [ ! -d "samples/$1" ]; then
+	echo "Downloading samples...";
+	wget -O "samples/$1.zip" "https://open.kattis.com/problems/$1/file/statement/samples.zip";
+	unzip "samples/$1.zip" -d "samples/$1";
+	rm "samples/$1.zip";
+fi
+
+if [ ! -f "$1.py" ]; then
+	echo "Problem file created from template:"
+	cp _kattis.py $1.py;
+	subl $1.py
+	exit 1 
+fi
+
+
+for ff in `ls samples/$1/*.in`; do
+	echo $ff;
+	echo '=== Input ===';
+	if [ $SHOW_INPUTS != 0 ]; then
+	    cat $ff;
+	fi;
+	echo "=== Result ===";
+	cat $ff | python $1.py;
+	echo "=== Expected result ===";
+	oo=`echo $ff | sed 's/\.in/\.ans/'`;
+	cat $oo;
+	echo "";
+	echo "";
+	if [ $STEP_BY_STEP != 0 ]; then
+	    read canigonext
+	fi
+done
