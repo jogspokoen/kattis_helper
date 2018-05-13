@@ -1,24 +1,40 @@
+# 
 import sys
-
-n = int(sys.stdin.readline()[:-1])
+# only on string is input
 s = sys.stdin.readline()[:-1]
-ss = [s[:-1] for s in sys.stdin.readlines()]
-nn = [int(n[:-1]) for n in sys.stdin.readlines()]
 
-n, m = map(int, sys.stdin.readline()[:-1].split(' '))
+# only on string of integers is an input 
+sn = map(int, sys.stdin.readline()[:-1].split(' '))
 
-for c in range(n):
-    
-    # string?
-    s = sys.stdin.readline()[:-1]
+# n cases below
+n = int(sys.stdin.readline()[:-1])
+for case in range(n):
+    pass
 
-    # integer?
-    k = int(sys.stdin.readline()[:-1])
+# n cases below, each line is a string
+n = int(sys.stdin.readline()[:-1])
+for case in range(n):
+    line = sys.stdin.readline()[:-1]
 
-    # list of integers
-    # integer?
-    tt = map(int, sys.stdin.readline()[:-1].split(' '))
 
-exit()
+# n cases below, each case is described with number, and is line of integers
+ncases = int(sys.stdin.readline()[:-1])
+for case in range(ncases):
+    l = map(int, sys.stdin.readline()[:-1].split(' '))
 
-abc = [chr(c) for c in range(65, 91)]
+# n cases below, each case is described with number, and is line of integers
+ncases = int(sys.stdin.readline()[:-1])
+for case in range(ncases):
+    n = int(sys.stdin.readline()[:-1])
+    l = map(int, sys.stdin.readline()[:-1].split(' '))
+
+
+# each line is a part of task
+ll = [l for l in sys.stdin.readlines()]
+for l in ll:
+    pass
+
+# each line of integers is a part of task
+ll = [map(int, l.split(' ')) for l in sys.stdin.readlines()]
+for l in ll:
+    pass
